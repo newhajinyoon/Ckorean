@@ -43,6 +43,7 @@ unsigned서명안함
 void -> 공허
 volatile -> 변덕
 while -> 동안
+scanf -> 입력받기
 ```
 
 ## 사용법
@@ -85,6 +86,7 @@ typedef long 긴;
 #define 공허 void
 #define 변덕 volatile
 #define 동안 while
+#define 입력받기 scanf 
 ```
 
 ## 예제
@@ -125,3 +127,91 @@ typedef long 긴;
     반환 0;
  }
  ```
+ 
+ ### 업다운게임
+ ```
+ #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+typedef int 정수;
+typedef char 문자;
+#define 출력 printf
+#define 반환 return
+#define 진입점 main
+#define 자동 auto
+#define 반복문끝 break
+#define 선택지 case
+#define 변함없는 const
+#define 진행 continue
+#define 기본 default
+#define 더블 double
+#define 아니면 else
+#define 열거형 enum
+#define 타파일전역변수 extern
+#define 실수형 float
+#define 위해 for
+#define 이동 goto
+#define 만일 if
+#define 인라인 inline
+typedef long 긴;
+#define 등록 register
+#define 제한 restrict
+#define 돌아가 return
+#define 짧다 short
+#define 서명 signed
+#define 크기 sizeof
+#define 고정 static
+#define 구조물 struct
+#define 스위치 switch
+#define 형식정의 typedef
+#define 연합 union
+#define 서명안함 unsigned
+#define 공허 void
+#define 변덕 volatile
+#define 동안 while
+#define 입력받기 scanf 
+
+정수 진입점 ()
+{
+        정수 com, user;
+        정수 cnt=0;
+        정수 play=1;
+
+        srand (time(NULL));
+        com=rand()%100+1; //1에서 100사이의 난수 생성
+
+        동안 (play==1)
+        {
+                출력 ("<<1~100사이의 수를 입력해 주세요>>\n");
+                입력받기 ("%d",&user);
+
+
+                동안 (user>100 || user<1)
+                {
+                        출력 ("\n잘못된 입력입니다.\n<<<다시 입력 해주세요>>>\n");
+                        입력받기 ("%d",&user);
+                } //조건에 맞지않는 입력일 경우 다시 입력하게 함
+                만일 (user<100&&user>1)
+                {
+                        만일 (user>com)
+                        {
+                                출력 ("down!!\n\n");
+                                cnt++; //시도 횟수 카운트
+                        }
+                        아니면 만일 (user<com)
+                        {
+                                출력 ("up!!\n\n");
+                                cnt++; //시도 횟수 카운트
+
+                        }
+                        아니면 만일 (com==user)
+                        {
+                                cnt++; //시도 횟수 카운트
+                                출력 ("%정답입니다!!\n%d번째에 맞추셨습니다.",cnt);
+                                play=0; //게임 종료 조건
+                        }
+                }
+        }
+}
+```
